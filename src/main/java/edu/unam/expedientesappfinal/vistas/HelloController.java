@@ -1,4 +1,4 @@
-package edu.unam.expedientesappfinal;
+package edu.unam.expedientesappfinal.vistas;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

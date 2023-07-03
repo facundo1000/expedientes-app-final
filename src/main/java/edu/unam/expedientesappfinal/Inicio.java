@@ -1,8 +1,10 @@
 package edu.unam.expedientesappfinal;
 
+import static edu.unam.expedientesappfinal.config.DataSource.iniciante;
+import static edu.unam.expedientesappfinal.config.DataSource.involucrado;
+
 import edu.unam.expedientesappfinal.config.ConexionDB;
 import edu.unam.expedientesappfinal.modelos.Persona;
-import edu.unam.expedientesappfinal.modelos.TipoDePersona;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -25,27 +27,7 @@ public class Inicio extends Application {
   }
 
   public static void main(String[] args) {
-    launch();
-
-    Persona iniciante = // Persona
-            new Persona(
-                    1L,
-                    "roberto",
-                    "lopez",
-                    "45963123",
-                    "2954789963",
-                    "algunemail@hotmail.com",
-                    TipoDePersona.INICIANTE.getValor());
-
-    Persona involucrado = // Persona
-            new Persona(
-                    2L,
-                    "martin",
-                    "melo",
-                    "50123654",
-                    "2958456987",
-                    "superman@yahoo.com.ar",
-                    TipoDePersona.INVOLUCRADO.getValor());
+    //    launch();
 
     EntityManager em = ConexionDB.getEntityManager();
 
@@ -63,6 +45,8 @@ public class Inicio extends Application {
     CriteriaQuery<Persona> consulta = cb.createQuery(Persona.class);
     Root<Persona> origen = consulta.from(Persona.class);
     List<Persona> personas = em.createQuery(consulta.select(origen)).getResultList();
+
+    System.out.println();
     personas.forEach(System.out::println);
   }
 }

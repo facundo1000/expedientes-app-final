@@ -1,6 +1,7 @@
 package edu.unam.expedientesappfinal.modelos;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "personas")
@@ -26,6 +27,8 @@ public class Persona {
 
   @Column(name = "tipo_persona")
   private String tipoDePersona;
+
+  @ManyToMany private List<Expediente> expediente;
 
   public Persona() {}
 
