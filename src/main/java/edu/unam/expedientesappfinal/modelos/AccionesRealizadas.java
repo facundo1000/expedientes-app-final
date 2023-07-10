@@ -17,11 +17,15 @@ public class AccionesRealizadas {
   @Column(name = "fecha_accion")
   private LocalDate fechaDeAccion;
 
+  @ManyToOne private Expediente expediente;
+
   public AccionesRealizadas() {}
 
-  public AccionesRealizadas(String accionRealizada, LocalDate fechaDeAccion) {
+  public AccionesRealizadas(
+      String accionRealizada, LocalDate fechaDeAccion, Expediente expediente) {
     this.accionRealizada = accionRealizada;
     this.fechaDeAccion = fechaDeAccion;
+    this.expediente = expediente;
   }
 
   public String getAccionRealizada() {
@@ -40,6 +44,14 @@ public class AccionesRealizadas {
     this.fechaDeAccion = fechaDeAccion;
   }
 
+  public Expediente getExpediente() {
+    return expediente;
+  }
+
+  public void setExpediente(Expediente expediente) {
+    this.expediente = expediente;
+  }
+
   @Override
   public String toString() {
     return "AccionesRealizadas{"
@@ -50,6 +62,8 @@ public class AccionesRealizadas {
         + '\''
         + ", fechaDeAccion="
         + fechaDeAccion
+        + ", expediente="
+        + expediente
         + '}';
   }
 }

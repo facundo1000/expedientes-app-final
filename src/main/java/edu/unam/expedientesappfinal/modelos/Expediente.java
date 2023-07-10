@@ -3,9 +3,7 @@ package edu.unam.expedientesappfinal.modelos;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "expediente")
@@ -26,9 +24,9 @@ public class Expediente {
   @Column(name = "estado_expediente")
   private String estadoDelExpediente;
 
-  @ManyToMany
-  private List<Persona> involucrados;
-  private List<AccionesRealizadas> acciones;
+  @ManyToMany private List<Persona> involucrados;
+
+  @OneToMany private List<AccionesRealizadas> acciones;
 
   public Expediente() {
     this.involucrados = new ArrayList<>();

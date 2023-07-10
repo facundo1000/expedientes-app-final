@@ -10,7 +10,6 @@ public class Reunion {
   private Long id;
   private String ciudad;
   private String minuta; // en la vista como un textArea
-  private String tipoReunion;
   private LocalDateTime fechaReunion;
   private List<String> temasTratados;
   private List<Expediente> expedientesAbiertos;
@@ -25,14 +24,12 @@ public class Reunion {
   public Reunion(
       String ciudad,
       String minuta,
-      String tipoReunion,
       LocalDateTime fechaReunion,
       List<String> temasTratados,
       List<Expediente> expedientesAbiertos,
       Set<Persona> miembros) {
     this.ciudad = ciudad;
     this.minuta = minuta;
-    this.tipoReunion = tipoReunion;
     this.fechaReunion = fechaReunion;
     this.temasTratados = temasTratados;
     this.expedientesAbiertos = expedientesAbiertos;
@@ -53,14 +50,6 @@ public class Reunion {
 
   public void setMinuta(String minuta) {
     this.minuta = minuta;
-  }
-
-  public String getTipoReunion() {
-    return tipoReunion;
-  }
-
-  public void setTipoReunion(String tipoReunion) {
-    this.tipoReunion = tipoReunion;
   }
 
   public LocalDateTime getFechaReunion() {
@@ -105,9 +94,6 @@ public class Reunion {
         + '\''
         + ", minuta='"
         + minuta
-        + '\''
-        + ", tipoReunion='"
-        + tipoReunion
         + '\''
         + ", fechaReunion="
         + fechaReunion

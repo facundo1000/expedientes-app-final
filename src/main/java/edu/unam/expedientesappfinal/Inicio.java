@@ -1,16 +1,7 @@
 package edu.unam.expedientesappfinal;
 
-import static edu.unam.expedientesappfinal.config.DataSource.iniciante;
-import static edu.unam.expedientesappfinal.config.DataSource.involucrado;
-
-import edu.unam.expedientesappfinal.config.ConexionDB;
-import edu.unam.expedientesappfinal.modelos.Persona;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
+import edu.unam.expedientesappfinal.servicios.PersonaServicio;
 import java.io.IOException;
-import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,24 +20,9 @@ public class Inicio extends Application {
   public static void main(String[] args) {
     //    launch();
 
-    EntityManager em = ConexionDB.getEntityManager();
-
-    em.getTransaction().begin();
-
-    var per = em.merge(iniciante);
-    var per2 = em.merge(involucrado);
-
-    em.persist(per);
-    em.persist(per2);
-
-    em.getTransaction().commit();
-
-    CriteriaBuilder cb = em.getCriteriaBuilder();
-    CriteriaQuery<Persona> consulta = cb.createQuery(Persona.class);
-    Root<Persona> origen = consulta.from(Persona.class);
-    List<Persona> personas = em.createQuery(consulta.select(origen)).getResultList();
-
+    PersonaServicio servicio = new PersonaServicio();
     System.out.println();
-    personas.forEach(System.out::println);
+
+    servicio.listar().forEach(System.out::println);
   }
 }
