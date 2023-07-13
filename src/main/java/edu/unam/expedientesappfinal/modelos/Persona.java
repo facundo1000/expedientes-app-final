@@ -1,10 +1,12 @@
 package edu.unam.expedientesappfinal.modelos;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "personas")
 public class Persona {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
@@ -26,6 +28,8 @@ public class Persona {
 
   @Column(name = "tipo_persona")
   private String tipoDePersona;
+
+  @ManyToMany private List<Expediente> expediente;
 
   public Persona() {}
 
