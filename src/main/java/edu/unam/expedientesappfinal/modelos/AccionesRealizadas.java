@@ -1,11 +1,13 @@
 package edu.unam.expedientesappfinal.modelos;
 
 import jakarta.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "acciones_realizadas")
-public class AccionesRealizadas {
+public class AccionesRealizadas implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,15 +19,15 @@ public class AccionesRealizadas {
   @Column(name = "fecha_accion")
   private LocalDate fechaDeAccion;
 
-  @ManyToOne private Expediente expediente;
+  @ManyToOne
+  @JoinColumn(name = "expediente_id")
+  private Expediente expediente;
 
   public AccionesRealizadas() {}
 
-  public AccionesRealizadas(
-      String accionRealizada, LocalDate fechaDeAccion, Expediente expediente) {
+  public AccionesRealizadas(String accionRealizada, LocalDate fechaDeAccion) {
     this.accionRealizada = accionRealizada;
     this.fechaDeAccion = fechaDeAccion;
-    this.expediente = expediente;
   }
 
   public String getAccionRealizada() {
@@ -62,8 +64,8 @@ public class AccionesRealizadas {
         + '\''
         + ", fechaDeAccion="
         + fechaDeAccion
-        + ", expediente="
-        + expediente
         + '}';
   }
+
+  @Serial private static final long serialVersionUID = 1285447166036239442L;
 }

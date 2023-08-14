@@ -12,10 +12,10 @@ module edu.unam.expedientesappfinal {
 
   opens edu.unam.expedientesappfinal to
       javafx.fxml;
-
+  opens edu.unam.expedientesappfinal.vistas.prueba to
+      javafx.fxml;
   opens edu.unam.expedientesappfinal.modelos;
 
   exports edu.unam.expedientesappfinal;
-  exports edu.unam.expedientesappfinal.vistas;
-  opens edu.unam.expedientesappfinal.vistas to javafx.fxml;
+  exports edu.unam.expedientesappfinal.vistas.prueba;
 }

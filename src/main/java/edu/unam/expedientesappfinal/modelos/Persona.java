@@ -1,14 +1,17 @@
 package edu.unam.expedientesappfinal.modelos;
 
 import jakarta.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "personas")
-public class Persona {
+public class Persona implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @Column(length = 20)
@@ -20,42 +23,58 @@ public class Persona {
   @Column(length = 20)
   private String dni;
 
-  @Column(length = 30)
+  @Column(length = 30, unique = true)
   private String telefono;
 
-  @Column(length = 50)
+  @Column(length = 50, unique = true)
   private String email;
 
   @Column(name = "tipo_persona")
-  private String tipoDePersona;
+  @Enumerated(EnumType.STRING)
+  private TipoDePersona tipoDePersona;
 
-  @ManyToMany private List<Expediente> expediente;
+  @ManyToMany(
+      mappedBy = "involucrados",
+      fetch = FetchType.LAZY,
+      cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  private List<Expediente> expediente;
 
-  public Persona() {}
+  private Boolean asistencia;
+
+  @PrePersist
+  public void setAsistenciaFalse() {
+    asistencia = Boolean.FALSE;
+  }
+
+  public Persona() {
+    this.expediente = new ArrayList<>();
+  }
 
   public Persona(
-      Long id,
       String nombre,
       String apellido,
       String dni,
       String telefono,
       String email,
-      String tipoDePersona) {
-    this.id = id;
+      TipoDePersona tipoDePersona,
+      Boolean asistencia) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
     this.telefono = telefono;
     this.email = email;
     this.tipoDePersona = tipoDePersona;
+    this.asistencia = asistencia;
   }
 
-  public Long getId() {
-    return id;
+  public void addExpediente(Expediente expediente) {
+    this.expediente.add(expediente);
+    expediente.getInvolucrados().add(this);
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void removeExpediente(Expediente expediente) {
+    this.expediente.remove(expediente);
+    expediente.getInvolucrados().remove(this);
   }
 
   public String getNombre() {
@@ -98,12 +117,20 @@ public class Persona {
     this.email = email;
   }
 
-  public String getTipoDePersona() {
+  public TipoDePersona getTipoDePersona() {
     return tipoDePersona;
   }
 
-  public void setTipoDePersona(String tipoDePersona) {
+  public void setTipoDePersona(TipoDePersona tipoDePersona) {
     this.tipoDePersona = tipoDePersona;
+  }
+
+  public List<Expediente> getExpediente() {
+    return expediente;
+  }
+
+  public void setExpediente(List<Expediente> expediente) {
+    this.expediente = expediente;
   }
 
   @Override
@@ -131,4 +158,6 @@ public class Persona {
         + '\''
         + '}';
   }
+
+  @Serial private static final long serialVersionUID = 2836725016219005304L;
 }
