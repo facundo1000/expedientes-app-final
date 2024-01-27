@@ -94,8 +94,7 @@ public class AccionesRepositorioImpl implements Repositorio<AccionesRealizadas> 
                   ? update.getFechaDeAccion()
                   : accion.getFechaDeAccion());
 
-          update.setExpediente(
-              (accion.getExpediente() == null) ? update.getExpediente() : accion.getExpediente());
+          update.setExpediente((accion.getExpediente() == null) ? update.getExpediente() : accion.getExpediente());
           em.merge(update);
           transaction.commit();
         }

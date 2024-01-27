@@ -5,17 +5,18 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>edu.unam.expedientesappfinal.modelos.Persona</class>
         <class>edu.unam.expedientesappfinal.modelos.Expediente</class>
-        <class>edu.unam.expedientesappfinal.modelos.Minuta</class>
+        <class>edu.unam.expedientesappfinal.modelos.OrdenDelDia</class>
         <class>edu.unam.expedientesappfinal.modelos.ConsejoDepartamental</class>
         <class>edu.unam.expedientesappfinal.modelos.AccionesRealizadas</class>
         <class>edu.unam.expedientesappfinal.modelos.Reunion</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/expedientes_app"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/expedientes_app"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="admin"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+<!--            <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>-->
             <!--Scrip para tomar el archivo sql con informacion de prueba-->
             <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
             <!--            <property name="hibernate.show_sql" value="true"/>-->

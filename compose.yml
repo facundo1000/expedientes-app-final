@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    container_name: postgress
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: expedientes_app
+      POSTGRES_USER: postgres
+    ports:
+        - "5432:5432"
+    networks:
+      - dbNet
+
+  webAdmin:
+    image: adminer
+    container_name: phpAdmin
+    restart: always
+    networks:
+      - dbNet
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+networks:
+  dbNet:

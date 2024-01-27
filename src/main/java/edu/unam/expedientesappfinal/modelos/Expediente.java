@@ -1,6 +1,7 @@
 package edu.unam.expedientesappfinal.modelos;
 
 import jakarta.persistence.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,171 +12,199 @@ import java.util.List;
 @Table(name = "expedientes")
 public class Expediente implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "texto_nota")
-  private String textNota;
+    @Column(name = "texto_nota")
+    private String textNota;
 
-  @Column(name = "fecha_ingreso_facultad")
-  private LocalDate ingresoFacultad;
+    @Column(name = "fecha_ingreso_facultad")
+    private LocalDate ingresoFacultad;
 
-  @OneToOne private Persona iniciante;
+    @OneToOne
+    private Persona iniciante;
 
-  @Column(name = "estado_expediente")
-  @Enumerated(EnumType.STRING)
-  private Estado estadoDelExpediente;
+    @Column(name = "estado_expediente")
+    @Enumerated(EnumType.STRING)
+    private Estado estadoDelExpediente;
 
-  @ManyToMany(
-      cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-      fetch = FetchType.LAZY)
-  @JoinTable(
-      name = "tbl_expedientes_involucrados",
-      joinColumns = @JoinColumn(name = "expediente_id"),
-      inverseJoinColumns = @JoinColumn(name = "personas_id"),
-      uniqueConstraints = @UniqueConstraint(columnNames = {"expediente_id", "personas_id"}))
-  private List<Persona> involucrados;
+    private Boolean eliminado = Boolean.FALSE;
 
-  @OneToMany(
-      cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-      fetch = FetchType.LAZY)
-  @JoinTable(
-      name = "tbl_expedientes_accciones",
-      joinColumns = @JoinColumn(name = "expediente_id"),
-      inverseJoinColumns = @JoinColumn(name = "acciones_id"),
-      uniqueConstraints = @UniqueConstraint(columnNames = {"expediente_id", "acciones_id"}))
-  private List<AccionesRealizadas> acciones;
+    @ManyToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tbl_expedientes_involucrados",
+            joinColumns = @JoinColumn(name = "expediente_id"),
+            inverseJoinColumns = @JoinColumn(name = "personas_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"expediente_id", "personas_id"}))
+    private List<Persona> involucrados;
 
-  @ManyToMany(
-      mappedBy = "expedientesAbiertos",
-      fetch = FetchType.LAZY,
-      cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-  private List<Reunion> reuniones;
+    @ManyToMany(
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+            fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tbl_expedientes_accciones",
+            joinColumns = @JoinColumn(name = "expediente_id"),
+            inverseJoinColumns = @JoinColumn(name = "acciones_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"expediente_id", "acciones_id"}))
+    private List<AccionesRealizadas> acciones;
 
-  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-  @JoinTable(
-          name = "tbl_expedientes_minutas",
-          joinColumns = @JoinColumn(name = "expediente_id"),
-          inverseJoinColumns = @JoinColumn(name = "minuta_id"),
-          uniqueConstraints = @UniqueConstraint(columnNames = {"expediente_id", "minuta_id"}))
-  private List<Minuta> minuta;
+    @ManyToMany(
+            mappedBy = "expedientesAbiertos",
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Reunion> reuniones;
 
-  public Expediente() {
-    this.involucrados = new ArrayList<>();
-    this.acciones = new ArrayList<>();
-  }
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "tbl_expedientes_minutas",
+            joinColumns = @JoinColumn(name = "expediente_id"),
+            inverseJoinColumns = @JoinColumn(name = "minuta_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"expediente_id", "minuta_id"}))
+    private List<OrdenDelDia> minuta;
 
-  public Expediente(
-      String textNota, LocalDate ingresoFacultad, Persona iniciante, Estado estadoDelExpediente) {
-    this();
-    this.textNota = textNota;
-    this.ingresoFacultad = ingresoFacultad;
-    this.iniciante = iniciante;
-    this.estadoDelExpediente = estadoDelExpediente;
-  }
 
-  public Expediente(String textNota) {
-    this.textNota = textNota;
-  }
-
-  public void addInvolucrado(Persona persona) {
-    this.involucrados.add(persona);
-    persona.getExpediente().add(this);
-  }
-
-  public void removeInvolucrado(Persona persona) {
-    this.involucrados.remove(persona);
-    persona.getExpediente().remove(this);
-  }
-
-  public void removeInvolucrados() {
-    for (Persona p : new ArrayList<>(involucrados)) {
-      removeInvolucrado(p);
+    public Expediente() {
+        this.involucrados = new ArrayList<>();
+        this.acciones = new ArrayList<>();
     }
-  }
 
-  public void addAccion(AccionesRealizadas accion) {
-    this.acciones.add(accion);
-    accion.setExpediente(this);
-  }
-
-  public void removeAccion(AccionesRealizadas accion) {
-    this.acciones.remove(accion);
-    accion.setExpediente(null);
-  }
-
-  public void removeAcciones() {
-    for (AccionesRealizadas a : acciones) {
-      removeAccion(a);
+    public Expediente(
+            String textNota, LocalDate ingresoFacultad, Persona iniciante, Estado estadoDelExpediente) {
+        this();
+        this.textNota = textNota;
+        this.ingresoFacultad = ingresoFacultad;
+        this.iniciante = iniciante;
+        this.estadoDelExpediente = estadoDelExpediente;
     }
-  }
 
-  public void addMinuta(Minuta minuta) {
-    this.minuta.add(minuta);
-    minuta.setExpediente(this);
-  }
+    public Expediente(String textNota) {
+        this.textNota = textNota;
+    }
 
-  public void removeMinuta(Minuta minuta) {
-    this.minuta.remove(minuta);
-    minuta.setExpediente(null);
-  }
+    public void addInvolucrado(Persona persona) {
+        this.involucrados.add(persona);
+//        persona.getExpediente().add(this);
+    }
 
-  public String getTextNota() {
-    return textNota;
-  }
+    public void removeInvolucrado(Persona persona) {
+        this.involucrados.remove(persona);
+//        persona.getExpediente().remove(this);
+    }
 
-  public void setTextNota(String textNota) {
-    this.textNota = textNota;
-  }
+    public void removeInvolucrados() {
+        for (Persona p : new ArrayList<>(involucrados)) {
+            removeInvolucrado(p);
+        }
+    }
 
-  public LocalDate getIngresoFacultad() {
-    return ingresoFacultad;
-  }
+    public void addAccion(AccionesRealizadas accion) {
+        this.acciones.add(accion);
+//        accion.addExpediente(this);
+    }
 
-  public void setIngresoFacultad(LocalDate ingresoFacultad) {
-    this.ingresoFacultad = ingresoFacultad;
-  }
+    public void removeAccion(AccionesRealizadas accion) {
+        this.acciones.remove(accion);
+//        accion.removeExpediente(this);
+    }
 
-  public Persona getIniciante() {
-    return iniciante;
-  }
+    public void removeAcciones() {
+        for (AccionesRealizadas a : acciones) {
+            removeAccion(a);
+        }
+    }
 
-  public void setIniciante(Persona iniciante) {
-    this.iniciante = iniciante;
-  }
+    public void addMinuta(OrdenDelDia minuta) {
+        this.minuta.add(minuta);
+        minuta.setExpediente(this);
+    }
 
-  public Estado getEstadoDelExpediente() {
-    return estadoDelExpediente;
-  }
+    public void removeMinuta(OrdenDelDia minuta) {
+        this.minuta.remove(minuta);
+        minuta.setExpediente(null);
+    }
 
-  public void setEstadoDelExpediente(Estado estadoDelExpediente) {
-    this.estadoDelExpediente = estadoDelExpediente;
-  }
+    public String getTextNota() {
+        return textNota;
+    }
 
-  public List<Persona> getInvolucrados() {
-    return involucrados;
-  }
+    public void setTextNota(String textNota) {
+        this.textNota = textNota;
+    }
 
-  public void setInvolucrados(List<Persona> involucrados) {
-    this.involucrados = involucrados;
-  }
+    public LocalDate getIngresoFacultad() {
+        return ingresoFacultad;
+    }
 
-  public List<AccionesRealizadas> getAcciones() {
-    return acciones;
-  }
+    public void setIngresoFacultad(LocalDate ingresoFacultad) {
+        this.ingresoFacultad = ingresoFacultad;
+    }
 
-  public void setAcciones(List<AccionesRealizadas> acciones) {
-    this.acciones = acciones;
-  }
+    public Persona getIniciante() {
+        return iniciante;
+    }
 
-  public List<Reunion> getReuniones() {
-    return reuniones;
-  }
+    public void setIniciante(Persona iniciante) {
+        this.iniciante = iniciante;
+    }
 
-  public void setReuniones(List<Reunion> reuniones) {
-    this.reuniones = reuniones;
-  }
+    public Estado getEstadoDelExpediente() {
+        return estadoDelExpediente;
+    }
 
-  @Serial private static final long serialVersionUID = 737959743550398308L;
+    public void setEstadoDelExpediente(Estado estadoDelExpediente) {
+        this.estadoDelExpediente = estadoDelExpediente;
+    }
+
+    public List<Persona> getInvolucrados() {
+        return involucrados;
+    }
+
+    public void setInvolucrados(List<Persona> involucrados) {
+        this.involucrados = involucrados;
+    }
+
+    public List<AccionesRealizadas> getAcciones() {
+        return acciones;
+    }
+
+    public void setAcciones(List<AccionesRealizadas> acciones) {
+        this.acciones = acciones;
+    }
+
+    public List<Reunion> getReuniones() {
+        return reuniones;
+    }
+
+    public void setReuniones(List<Reunion> reuniones) {
+        this.reuniones = reuniones;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    @Serial
+    private static final long serialVersionUID = 737959743550398308L;
+
+    @Override
+    public String toString() {
+        return "Expediente{" +
+                "id=" + id +
+                ", textNota='" + textNota + '\'' +
+                ", ingresoFacultad=" + ingresoFacultad +
+                ", iniciante=" + iniciante +
+                ", estadoDelExpediente=" + estadoDelExpediente +
+                ", involucrados=" + involucrados +
+                ", acciones=" + acciones +
+                ", reuniones=" + reuniones +
+                ", minuta=" + minuta +
+                '}';
+    }
 }

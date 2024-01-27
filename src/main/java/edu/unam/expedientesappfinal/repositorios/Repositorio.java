@@ -8,7 +8,7 @@ public interface Repositorio<T> {
 
   T obtenerPorId(Long id);
 
-  void crear(T persona);
+  void crear(T t);
 
   void actualizar(Long id, T t);
 
