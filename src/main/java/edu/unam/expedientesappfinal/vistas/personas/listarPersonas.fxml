@@ -77,8 +77,8 @@
                 <TableColumn prefWidth="156.0" text="Nombre/s" />
                   <TableColumn prefWidth="156.0" text="Apellido/s" />
                   <TableColumn prefWidth="114.0" text="Teléfono" />
-                  <TableColumn prefWidth="123.0" text="Fecha de nacimiento" />
-                  <TableColumn prefWidth="123.0" text="Fecha de ingreso a la institución" />
+                  <TableColumn prefWidth="124.0" text="Fecha de nacimiento" />
+                  <TableColumn prefWidth="124.0" text="Fecha de ingreso a la institución" />
                   <TableColumn prefWidth="165.0" text="Correo electrónico" />
                   <TableColumn prefWidth="87.0" text="Categoría" />
                   <TableColumn prefWidth="66.0" text="Asistencia" />
