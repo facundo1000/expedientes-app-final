@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onEditButtonClicked" prefHeight="680.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutY="122.4" prefHeight="514.0" prefWidth="903.0" style="-fx-background-color: #ffff96;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="122.0">
+         <children>
+            <Separator layoutX="16.0" layoutY="45.0" prefHeight="3.0" prefWidth="862.0" style="-fx-background-color: #000000;" />
+            <Label layoutX="23.0" layoutY="14.0" text="Id">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="196.0" layoutY="14.0" text="Nota">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="374.0" layoutY="14.0" text="Fecha de Ingreso">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="561.0" layoutY="14.0" text="Iniciante">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="666.0" layoutY="14.0" text="Involucrados">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="797.0" layoutY="14.0" text="Acciones">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Separator layoutX="15.0" layoutY="185.0" prefHeight="3.0" prefWidth="862.0" style="-fx-background-color: #000000;" />
+            <Label layoutX="23.0" layoutY="71.0" text="0001">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="211.0" text="0002">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <DatePicker layoutX="378.0" layoutY="75.0" prefHeight="35.0" prefWidth="136.0" />
+            <Separator layoutX="16.0" layoutY="319.0" prefHeight="3.0" prefWidth="862.0" style="-fx-background-color: #000000;" />
+            <SplitMenuButton layoutX="677.0" layoutY="75.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Seleccione">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </SplitMenuButton>
+            <TextArea layoutX="130.0" layoutY="57.0" prefHeight="115.0" prefWidth="200.0" promptText="ingrese texto de la nota" />
+            <TextArea layoutX="130.0" layoutY="196.0" prefHeight="115.0" prefWidth="200.0" promptText="ingrese texto de la nota" />
+            <Label layoutX="19.0" layoutY="337.0" text="0003">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextArea layoutX="130.0" layoutY="337.0" prefHeight="115.0" prefWidth="200.0" promptText="ingrese texto de la nota" />
+            <Separator layoutX="23.0" layoutY="459.0" prefHeight="3.0" prefWidth="862.0" style="-fx-background-color: #000000;" />
+            <TextField layoutX="539.0" layoutY="75.0" prefHeight="35.0" prefWidth="118.0" promptText="Ingrese nombre" />
+            <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="797.0" layoutY="66.0" onMouseClicked="#onEditButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@editar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="844.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@borrar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="797.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@editar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="844.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@borrar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="797.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@editar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="844.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@borrar.png" />
+               </image>
+            </ImageView>
+            <Pagination layoutX="173.0" layoutY="474.0" prefHeight="52.0" prefWidth="545.0" />
+            <DatePicker layoutX="378.0" layoutY="203.0" prefHeight="35.0" prefWidth="136.0" />
+            <TextField layoutX="539.0" layoutY="203.0" prefHeight="35.0" prefWidth="118.0" promptText="Ingrese nombre" />
+            <SplitMenuButton layoutX="677.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Seleccione">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </SplitMenuButton>
+            <DatePicker layoutX="378.0" layoutY="337.0" prefHeight="35.0" prefWidth="136.0" />
+            <TextField layoutX="539.0" layoutY="337.0" prefHeight="35.0" prefWidth="118.0" promptText="Ingrese nombre" />
+            <SplitMenuButton layoutX="677.0" layoutY="337.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Seleccione">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </SplitMenuButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="14.0" layoutY="20.0" text="Expedientes">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="72.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: #0abd04;" text="Añadir">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextField layoutX="527.0" layoutY="57.0" prefHeight="46.0" prefWidth="352.0" promptText="Search">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="838.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@search.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
