@@ -94,8 +94,7 @@ public class AccionesRepositorioImpl implements Repositorio<AccionesRealizadas> 
                   ? update.getFechaDeAccion()
                   : accion.getFechaDeAccion());
 
-          update.setExpediente(
-              (accion.getExpediente() == null) ? update.getExpediente() : accion.getExpediente());
+          update.setExpediente((accion.getExpediente() == null) ? update.getExpediente() : accion.getExpediente());
           em.merge(update);
           transaction.commit();
         }
@@ -120,7 +119,7 @@ public class AccionesRepositorioImpl implements Repositorio<AccionesRealizadas> 
         accion = em.find(AccionesRealizadas.class, id);
 
         if (accion != null) {
-          em.remove(accion);
+          accion.setEliminado(true);
           System.out.println("Accion N° " + id + " eliminada");
         }
         transaction.commit();

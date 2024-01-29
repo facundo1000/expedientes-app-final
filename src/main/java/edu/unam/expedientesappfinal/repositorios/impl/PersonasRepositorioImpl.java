@@ -83,18 +83,12 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
         update = em.createQuery(query).setParameter("id", id).getSingleResult();
 
         if (update != null) {
-          update.setNombre(
-              persona.getNombre().isBlank() ? update.getNombre() : persona.getNombre());
-          update.setApellido(
-              (persona.getApellido().isBlank()) ? update.getApellido() : persona.getApellido());
+          update.setNombre(persona.getNombre().isBlank() ? update.getNombre() : persona.getNombre());
+          update.setApellido((persona.getApellido().isBlank()) ? update.getApellido() : persona.getApellido());
           update.setDni((persona.getDni().isBlank()) ? update.getDni() : persona.getDni());
-          update.setTelefono(
-              (persona.getTelefono().isBlank()) ? update.getTelefono() : persona.getTelefono());
+          update.setTelefono((persona.getTelefono().isBlank()) ? update.getTelefono() : persona.getTelefono());
           update.setEmail((persona.getEmail().isBlank()) ? update.getEmail() : persona.getEmail());
-          update.setTipoDePersona(
-              (persona.getTipoDePersona() == null)
-                  ? update.getTipoDePersona()
-                  : persona.getTipoDePersona());
+          update.setTipoDePersona((persona.getTipoDePersona() == null) ? update.getTipoDePersona() : persona.getTipoDePersona());
           em.merge(update);
           transaction.commit();
         }
@@ -119,7 +113,7 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
         persona = em.find(Persona.class, id);
 
         if (persona != null) {
-          em.remove(persona);
+          persona.setEliminado(true);
           System.out.println("Persona N° " + id + " eliminada");
         }
         transaction.commit();
