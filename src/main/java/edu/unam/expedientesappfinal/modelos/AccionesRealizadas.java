@@ -26,7 +26,7 @@ public class AccionesRealizadas implements Serializable {
 //    @JoinColumn(name = "expediente_id")
     private List<Expediente> expediente;
 
-    private Boolean eliminado;
+    private Boolean eliminado = Boolean.FALSE;
 
     @PrePersist
     public void prePersist() {
