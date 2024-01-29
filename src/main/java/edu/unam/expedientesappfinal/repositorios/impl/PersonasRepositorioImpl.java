@@ -113,7 +113,7 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
         persona = em.find(Persona.class, id);
 
         if (persona != null) {
-          em.remove(persona);
+          persona.setEliminado(true);
           System.out.println("Persona N° " + id + " eliminada");
         }
         transaction.commit();

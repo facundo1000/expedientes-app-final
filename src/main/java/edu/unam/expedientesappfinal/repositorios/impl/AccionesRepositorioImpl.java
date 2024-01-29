@@ -119,7 +119,7 @@ public class AccionesRepositorioImpl implements Repositorio<AccionesRealizadas> 
         accion = em.find(AccionesRealizadas.class, id);
 
         if (accion != null) {
-          em.remove(accion);
+          accion.setEliminado(true);
           System.out.println("Accion N° " + id + " eliminada");
         }
         transaction.commit();

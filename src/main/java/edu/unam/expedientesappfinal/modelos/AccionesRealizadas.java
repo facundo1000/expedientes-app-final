@@ -76,17 +76,24 @@ public class AccionesRealizadas implements Serializable {
         this.expediente = expediente;
     }
 
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
     @Override
     public String toString() {
-        return "AccionesRealizadas{"
-                + "id="
-                + id
-                + ", accionRealizada='"
-                + accionRealizada
-                + '\''
-                + ", fechaDeAccion="
-                + fechaDeAccion
-                + '}';
+        final StringBuilder sb = new StringBuilder("AccionesRealizadas{");
+        sb.append("id=").append(id);
+        sb.append(", accionRealizada='").append(accionRealizada).append('\'');
+        sb.append(", fechaDeAccion=").append(fechaDeAccion);
+        sb.append(", expediente=").append(expediente);
+        sb.append(", eliminado=").append(eliminado);
+        sb.append('}');
+        return sb.toString();
     }
 
     @Serial

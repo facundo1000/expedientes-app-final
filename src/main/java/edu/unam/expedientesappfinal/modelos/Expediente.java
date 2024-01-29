@@ -80,6 +80,15 @@ public class Expediente implements Serializable {
         this.estadoDelExpediente = estadoDelExpediente;
     }
 
+    public Expediente(String textNota, LocalDate ingresoFacultad, Persona iniciante, Estado estadoDelExpediente, List<Persona> involucrados, List<AccionesRealizadas> acciones) {
+        this.textNota = textNota;
+        this.ingresoFacultad = ingresoFacultad;
+        this.iniciante = iniciante;
+        this.estadoDelExpediente = estadoDelExpediente;
+        this.involucrados = involucrados;
+        this.acciones = acciones;
+    }
+
     public Expediente(String textNota) {
         this.textNota = textNota;
     }
@@ -195,16 +204,18 @@ public class Expediente implements Serializable {
 
     @Override
     public String toString() {
-        return "Expediente{" +
-                "id=" + id +
-                ", textNota='" + textNota + '\'' +
-                ", ingresoFacultad=" + ingresoFacultad +
-                ", iniciante=" + iniciante +
-                ", estadoDelExpediente=" + estadoDelExpediente +
-                ", involucrados=" + involucrados +
-                ", acciones=" + acciones +
-                ", reuniones=" + reuniones +
-                ", minuta=" + minuta +
-                '}';
+        final StringBuilder sb = new StringBuilder("Expediente{");
+        sb.append("id=").append(id);
+        sb.append(", textNota='").append(textNota).append('\'');
+        sb.append(", ingresoFacultad=").append(ingresoFacultad);
+        sb.append(", iniciante=").append(iniciante);
+        sb.append(", estadoDelExpediente=").append(estadoDelExpediente);
+        sb.append(", eliminado=").append(eliminado);
+        sb.append(", involucrados=").append(involucrados);
+        sb.append(", acciones=").append(acciones);
+        sb.append(", reuniones=").append(reuniones);
+        sb.append(", minuta=").append(minuta);
+        sb.append('}');
+        return sb.toString();
     }
 }

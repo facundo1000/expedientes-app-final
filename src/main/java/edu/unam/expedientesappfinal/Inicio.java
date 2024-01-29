@@ -11,6 +11,7 @@ import edu.unam.expedientesappfinal.repositorios.impl.PersonasRepositorioImpl;
 import jakarta.persistence.EntityManager;
 import java.io.IOException;
 import java.time.LocalDate;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -47,6 +48,7 @@ public class Inicio extends Application {
     expedienteRoberto.addAccion(new AccionesRealizadas("nada nada menos nada", LocalDate.now()));
     expeRepo.crear(expedienteRoberto); // se crea un expediente
 
+
     // Visualizacion del servicio persona
     System.out.println("--------------------Lista de Personas---------------");
     repo.listar().forEach(System.out::println);
@@ -68,6 +70,8 @@ public class Inicio extends Application {
 
     repo.listar().forEach(System.out::println);
     System.out.println("-----------Eliminar Persona--------------");
+    repo.eliminar(1L); // se elimina la persona con ID 1
+    repo.listar().forEach(System.out::println);
     expeRepo.listar().forEach(System.out::println); // se listan todos los expedientes
     System.out.println();
     Expediente porId = expeRepo.obtenerPorId(1L);

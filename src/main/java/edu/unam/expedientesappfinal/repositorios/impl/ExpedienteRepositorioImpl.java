@@ -79,26 +79,15 @@ public class ExpedienteRepositorioImpl implements Repositorio<Expediente> {
                 update = em.createQuery(query).setParameter("id", id).getSingleResult();
 
                 if (update != null) {
-                    update.setTextNota(
-                            (expediente.getTextNota().isBlank() || expediente.getTextNota() == null)
-                                    ? update.getTextNota()
-                                    : expediente.getTextNota());
-
-                    update.setIniciante(
-                            (expediente.getIniciante() == null
-                                    ? update.getIniciante()
-                                    : expediente.getIniciante()));
-                    update.setEstadoDelExpediente(
-                            (expediente.getEstadoDelExpediente() == null)
-                                    ? update.getEstadoDelExpediente()
-                                    : expediente.getEstadoDelExpediente());
-                    update.setIngresoFacultad(
-                            (expediente.getIngresoFacultad() == null)
-                                    ? update.getIngresoFacultad()
-                                    : expediente.getIngresoFacultad());
+                    update.setTextNota((expediente.getTextNota().isBlank() || expediente.getTextNota() == null) ? update.getTextNota() : expediente.getTextNota());
+                    update.setIniciante((expediente.getIniciante() == null ? update.getIniciante() : expediente.getIniciante()));
+                    update.setEstadoDelExpediente((expediente.getEstadoDelExpediente() == null) ? update.getEstadoDelExpediente() : expediente.getEstadoDelExpediente());
+                    update.setIngresoFacultad((expediente.getIngresoFacultad() == null) ? update.getIngresoFacultad() : expediente.getIngresoFacultad());
                     update.setEliminado((expediente.getEliminado() == null) ? update.getEliminado() : expediente.getEliminado());
                     update.setIniciante((expediente.getIniciante() == null) ? update.getIniciante() : expediente.getIniciante());
                     update.setEstadoDelExpediente((expediente.getEstadoDelExpediente() == null) ? update.getEstadoDelExpediente() : expediente.getEstadoDelExpediente());
+                    update.setAcciones((expediente.getAcciones() == null) ? update.getAcciones() : expediente.getAcciones());
+                    update.setInvolucrados((expediente.getInvolucrados() == null) ? update.getInvolucrados() : expediente.getInvolucrados());
                     em.merge(update);
                     transaction.commit();
                 }
@@ -123,7 +112,7 @@ public class ExpedienteRepositorioImpl implements Repositorio<Expediente> {
                 expediente = em.find(Expediente.class, id);
 
                 if (expediente != null) {
-                    em.remove(expediente);
+                    expediente.setEliminado(Boolean.TRUE);
                 }
                 transaction.commit();
             }
