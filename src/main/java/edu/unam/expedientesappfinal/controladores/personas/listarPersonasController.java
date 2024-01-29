@@ -1,10 +1,11 @@
+package edu.unam.expedientesappfinal.controladores.personas;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Pagination;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class PleaseProvideControllerClassName {
+public class listarPersonasController {
 
     @FXML
     private Button btnAgregar;
@@ -23,9 +24,6 @@ public class PleaseProvideControllerClassName {
 
     @FXML
     private Button btnMenuReuniones;
-
-    @FXML
-    private Pagination btnPaginacion;
 
     @FXML
     private TextField inputFiltro;
