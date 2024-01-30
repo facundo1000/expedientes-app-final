@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.22495755517826826" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #202123;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="81.0" prefHeight="76.0" prefWidth="230.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Gestor de reuniones" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnMenuPersonas" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #202123; -fx-font-family: Source Sans 3; -fx-font-weight: 500;" text="Personas" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMenuExpedientes" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #202123; -fx-font-family: Source Sans 3; -fx-font-weight: 500;" text="Expedientes" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMenuReuniones" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #202123; -fx-font-family: Source Sans 3; -fx-font-weight: 500;" text="Reuniones" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMenuConsejo" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #202123; -fx-font-family: Source Sans 3; -fx-font-weight: 500;" text="El consejo" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMenuMinutas" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="371.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #202123; -fx-font-family: Source Sans 3; -fx-font-weight: 500;" text="Minutas" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="668.0">
+         <children>
+            <AnchorPane prefHeight="76.0" prefWidth="591.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="45.0" prefWidth="405.0" style="-fx-font-family: Source Sans 3; -fx-font-weight: 600;" text="Editando a una persona">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutY="55.0" prefHeight="12.0" prefWidth="910.0" />
+               </children></AnchorPane>
+            <Label layoutX="14.0" layoutY="76.0" prefHeight="21.0" prefWidth="137.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Tipo de documento" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="177.0" layoutY="76.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Número de documento" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputNroDoc" layoutX="177.0" layoutY="97.0" prefHeight="25.0" prefWidth="162.0" />
+            <Label layoutX="366.0" layoutY="76.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Nombre/s" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputNombres" layoutX="366.0" layoutY="97.0" prefHeight="25.0" prefWidth="240.0" />
+            <Label layoutX="635.0" layoutY="76.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Apellido/s" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputApellidos" layoutX="635.0" layoutY="97.0" prefHeight="25.0" prefWidth="240.0" />
+            <ComboBox fx:id="comboBoxTipoDoc" layoutX="14.0" layoutY="97.0" prefHeight="25.0" prefWidth="137.0" />
+            <Label layoutX="14.0" layoutY="147.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Fecha de nacimiento" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datepickerFechaNac" layoutX="14.0" layoutY="168.0" prefHeight="25.0" prefWidth="137.0" />
+            <Label layoutX="176.0" layoutY="145.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Correo electrónico" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputCorreoElectronico" layoutX="176.0" layoutY="166.0" prefHeight="25.0" prefWidth="220.0" />
+            <Label layoutX="418.0" layoutY="147.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Categoría" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="radioEstudiante" layoutX="418.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Estudiante" textFill="#202123" />
+            <RadioButton fx:id="radioDocente" layoutX="508.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Docente" textFill="#202123" />
+            <RadioButton fx:id="radioNoDocente" layoutX="590.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="No docente" textFill="#202123" />
+            <RadioButton fx:id="radioMiembro" layoutX="688.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Miembro" textFill="#202123" />
+            <RadioButton fx:id="radioDirector" layoutX="778.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Director" textFill="#202123" />
+            <Button fx:id="btnLimpiarCampos" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="197.0" style="-fx-background-color: #D39C2F; -fx-font-family: Source Sans 3; -fx-font-weight: 500; -fx-border-color: #202123;" text="Limpiar campos" textAlignment="CENTER" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRegistrar" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="219.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="168.0" style="-fx-background-color: #629C44; -fx-font-family: Source Sans 3; -fx-font-weight: 500; -fx-border-color: #202123;" text="Registrar" textAlignment="CENTER" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
