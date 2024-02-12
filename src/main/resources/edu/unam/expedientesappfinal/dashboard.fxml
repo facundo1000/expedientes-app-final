@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+           prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="edu.unam.expedientesappfinal.controladores.MainFormController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../springSandbox/expedientes-app-final/src/main/resources/design/main_form.css">
+         <children>
+            <BorderPane prefHeight="800.0" prefWidth="1200.0" styleClass="shadow" stylesheets="@../../../design/main_form.css" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="18.0">
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="greetUser" prefHeight="800.0" prefWidth="215.0" styleClass="main-bg" stylesheets="@../../springSandbox/expedientes-app-final/src/main/resources/design/main_form.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="54.0" layoutY="67.0" prefHeight="26.0" prefWidth="93.0" text="Bienvenido">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnHome" layoutX="14.0" layoutY="150.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="172.0" text="Home" />
+                              <Button fx:id="btnAddPersona" layoutX="15.0" layoutY="213.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="171.0" text="Agregar Persona" />
+                              <Button fx:id="btnAddExpediente" layoutX="15.0" layoutY="282.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="171.0" text="Agregar Expediente" />
+                              <Button fx:id="btnAddAccion" layoutX="15.0" layoutY="349.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="171.0" text="Agregar Accion" />
+                              <Button fx:id="btnAddReunion" layoutX="15.0" layoutY="409.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="171.0" text="Agregar Reunion" />
+                              <Button fx:id="btnMiembros" layoutX="15.0" layoutY="475.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="171.0" text="Miembros del Consejo" />
+                              <Line endX="79.0" layoutX="108.0" layoutY="116.0" startX="-93.5" />
+                              <Button fx:id="btnAddOrdenDelDia" layoutX="15.0" layoutY="548.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="171.0" text="Orden del Dia" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <top>
+                  <AnchorPane prefHeight="60.0" prefWidth="1200.0" styleClass="white-bg" stylesheets="src/main/resources/design/main_form.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="39.0" layoutY="17.0" text="Panel De Control">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="1125.0" layoutY="18.0" mnemonicParsing="false" text="Salir" AnchorPane.rightAnchor="14.0" />
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane fx:id="addPersonasForm" prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../../design/main_form.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <TableView fx:id="addPersonasTableView" layoutX="13.0" layoutY="59.0" prefHeight="585.0" prefWidth="975.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
+                          <columns>
+                            <TableColumn fx:id="addPersonaColPersonaId" prefWidth="75.0" text="ID Persona" />
+                            <TableColumn fx:id="addPersonaColPersonaNombre" prefWidth="93.0" text="Nombre" />
+                              <TableColumn fx:id="addPersonaColPersonaApellido" prefWidth="132.39996337890625" text="Apellido" />
+                              <TableColumn fx:id="addPersonaColPersonaTipoDni" prefWidth="79.60000610351562" text="Tipo DNI" />
+                              <TableColumn fx:id="addPersonaColPersonaDni" prefWidth="124.39996337890625" text="DNI" />
+                              <TableColumn fx:id="addPersonaColPersonaTelefono" prefWidth="118.60003662109375" text="Telefono" />
+                              <TableColumn fx:id="addPersonaColPersonaEmail" prefWidth="123.4000244140625" text="Email" />
+                              <TableColumn fx:id="addPersonaColPersonaTipo" prefWidth="88.60003662109375" text="Tipo Persona" />
+                              <TableColumn fx:id="addPersonaColPersonaBday" prefWidth="128.800048828125" text="Fecha-Nac" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="addPersonaColPersonaDelete" layoutX="821.0" layoutY="646.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="112.0" text="Eliminar" AnchorPane.bottomAnchor="14.799999999999955" AnchorPane.rightAnchor="38.200000000000045">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="14.0" layoutY="14.0" text="Seccion Personas">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addPersonaBtnUpdate" layoutX="692.0" layoutY="646.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="112.0" text="Modificar" AnchorPane.bottomAnchor="14.799999999999955" AnchorPane.rightAnchor="167.20000000000005">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="addPersonaBtnAgregar" layoutX="560.0" layoutY="646.0" mnemonicParsing="false" onAction="#addPersonaBtn" prefHeight="43.0" prefWidth="112.0" text="Agregar" AnchorPane.bottomAnchor="14.799999999999955" AnchorPane.rightAnchor="299.20000000000005">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
