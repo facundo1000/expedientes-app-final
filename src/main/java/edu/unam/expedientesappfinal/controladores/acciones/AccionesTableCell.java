@@ -1,6 +1,6 @@
 package edu.unam.expedientesappfinal.controladores.acciones;
 
-import edu.unam.expedientesappfinal.modelos.AccionesRealizadas;
+import edu.unam.expedientesappfinal.models.AccionesRealizadas;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;

@@ -1,4 +1,4 @@
-package edu.unam.expedientesappfinal.modelos;
+package edu.unam.expedientesappfinal.models;
 
 import jakarta.persistence.*;
 

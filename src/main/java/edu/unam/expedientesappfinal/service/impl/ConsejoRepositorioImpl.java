@@ -1,7 +1,7 @@
-package edu.unam.expedientesappfinal.repositorios.impl;
+package edu.unam.expedientesappfinal.service.impl;
 
-import edu.unam.expedientesappfinal.modelos.ConsejoDepartamental;
-import edu.unam.expedientesappfinal.repositorios.Repositorio;
+import edu.unam.expedientesappfinal.models.ConsejoDepartamental;
+import edu.unam.expedientesappfinal.service.Repositorio;
 import java.util.List;
 
 public class ConsejoRepositorioImpl implements Repositorio<ConsejoDepartamental> {

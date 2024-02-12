@@ -1,7 +1,7 @@
-package edu.unam.expedientesappfinal.repositorios.impl;
+package edu.unam.expedientesappfinal.service.impl;
 
-import edu.unam.expedientesappfinal.modelos.Reunion;
-import edu.unam.expedientesappfinal.repositorios.Repositorio;
+import edu.unam.expedientesappfinal.models.Reunion;
+import edu.unam.expedientesappfinal.service.Repositorio;
 import java.util.List;
 
 public class ReunionRepositorioImpl implements Repositorio<Reunion> {

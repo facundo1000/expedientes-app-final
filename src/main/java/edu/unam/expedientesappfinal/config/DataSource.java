@@ -1,8 +1,9 @@
 package edu.unam.expedientesappfinal.config;
 
-import edu.unam.expedientesappfinal.modelos.*;
+import edu.unam.expedientesappfinal.models.*;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 public class DataSource {
 
@@ -40,7 +41,7 @@ public class DataSource {
           "45963123",
           "2954789963",
           "algunemail@hotmail.com",
-          getByName("iniciante"),
+              List.of("INICIANTE"),
           true);
 
   public static Persona involucrado =
@@ -50,7 +51,7 @@ public class DataSource {
           "21456987",
           "3755987456",
           "hola@aou.com.ar",
-          getByName("involucrado"),
+          List.of("INVOLUCRADO"),
           false);
 
   public static Persona director =
@@ -60,7 +61,7 @@ public class DataSource {
           "36321654",
           "432059",
           "oti@yahoo.com.ar",
-          getByName("director"),
+          List.of("DIRECTOR"),
           true);
 
   public static Expediente expedienteRoberto =
@@ -68,4 +69,5 @@ public class DataSource {
 
   public static AccionesRealizadas accion_1 =
       new AccionesRealizadas("se rompio todo", LocalDate.of(2023, Month.AUGUST, 23));
+
 }

@@ -1,6 +1,5 @@
-package edu.unam.expedientesappfinal.modelos;
+package edu.unam.expedientesappfinal.models;
 
-import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;

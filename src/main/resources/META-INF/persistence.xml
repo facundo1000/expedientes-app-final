@@ -3,12 +3,12 @@
              version="3.0">
     <persistence-unit name="expedientes" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>edu.unam.expedientesappfinal.modelos.Persona</class>
-        <class>edu.unam.expedientesappfinal.modelos.Expediente</class>
-        <class>edu.unam.expedientesappfinal.modelos.OrdenDelDia</class>
-        <class>edu.unam.expedientesappfinal.modelos.ConsejoDepartamental</class>
-        <class>edu.unam.expedientesappfinal.modelos.AccionesRealizadas</class>
-        <class>edu.unam.expedientesappfinal.modelos.Reunion</class>
+        <class>edu.unam.expedientesappfinal.models.Persona</class>
+        <class>edu.unam.expedientesappfinal.models.Expediente</class>
+        <class>edu.unam.expedientesappfinal.models.OrdenDelDia</class>
+        <class>edu.unam.expedientesappfinal.models.ConsejoDepartamental</class>
+        <class>edu.unam.expedientesappfinal.models.AccionesRealizadas</class>
+        <class>edu.unam.expedientesappfinal.models.Reunion</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/expedientes_app"/>

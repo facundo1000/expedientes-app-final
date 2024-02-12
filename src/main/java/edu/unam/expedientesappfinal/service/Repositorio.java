@@ -1,6 +1,5 @@
-package edu.unam.expedientesappfinal.repositorios;
+package edu.unam.expedientesappfinal.service;
 
-import edu.unam.expedientesappfinal.modelos.Persona;
 import java.util.List;
 
 public interface Repositorio<T> {

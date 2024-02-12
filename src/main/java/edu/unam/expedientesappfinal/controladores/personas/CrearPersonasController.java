@@ -1,37 +1,28 @@
 package edu.unam.expedientesappfinal.controladores.personas;
 
+import edu.unam.expedientesappfinal.config.ConexionDB;
+import edu.unam.expedientesappfinal.models.Persona;
+import edu.unam.expedientesappfinal.models.TipoDeDocumento;
+import edu.unam.expedientesappfinal.service.impl.PersonasRepositorioImpl;
+import jakarta.persistence.EntityManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
-public class CrearPersonasController {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-    @FXML
-    private Button btnLimpiarCampos;
-
-    @FXML
-    private Button btnMenuConsejo;
-
-    @FXML
-    private Button btnMenuExpedientes;
-
-    @FXML
-    private Button btnMenuMinutas;
-
-    @FXML
-    private Button btnMenuPersonas;
-
-    @FXML
-    private Button btnMenuReuniones;
+public class CrearPersonasController implements Initializable {
 
     @FXML
     private Button btnRegistrar;
 
     @FXML
-    private ComboBox<?> comboBoxTipoDoc;
+    private ComboBox<String> comboBoxTipoDoc;
 
     @FXML
     private DatePicker datepickerFechaNac;
@@ -49,18 +40,57 @@ public class CrearPersonasController {
     private TextField inputNroDoc;
 
     @FXML
-    private RadioButton radioDirector;
+    private CheckBox chkDirector;
 
     @FXML
-    private RadioButton radioDocente;
+    private CheckBox chkDocente;
 
     @FXML
-    private RadioButton radioEstudiante;
+    private CheckBox chkEstudiante;
 
     @FXML
-    private RadioButton radioMiembro;
+    private CheckBox chkMiembro;
 
     @FXML
-    private RadioButton radioNoDocente;
+    private CheckBox chkNoDocente;
 
+    @FXML
+    private TextField inputTelefono;
+
+    private PersonasRepositorioImpl repo;
+
+    private EntityManager em;
+
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
+
+    public void addPersona() {
+        if (comboBoxTipoDoc.getSelectionModel().getSelectedItem().isEmpty()
+                || inputApellidos.getText().isEmpty()
+                || inputCorreoElectronico.getText().isEmpty()
+                || inputNombres.getText().isEmpty()
+                || inputNroDoc.getText().isEmpty()) {
+
+            alert.setContentText("Por favor complete los campos vacios");
+        } else {
+            em = ConexionDB.getEntityManager();
+            repo = new PersonasRepositorioImpl(em);
+            repo.crear(new Persona(inputNombres.getText(),inputApellidos.getText(),inputNroDoc.getText(),inputTelefono.getText(),inputCorreoElectronico.getText(),null,true));
+        }
+    }
+
+    public void tipoDniList() {
+
+        List<String> list = new ArrayList<>();
+
+        for (TipoDeDocumento data : TipoDeDocumento.values()) {
+            list.add(data.getNombre());
+        }
+        ObservableList<String> ls = FXCollections.observableArrayList(list);
+        comboBoxTipoDoc.setItems(ls);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tipoDniList();
+    }
 }

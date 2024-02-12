@@ -14,10 +14,13 @@ module edu.unam.expedientesappfinal {
       javafx.fxml;
   opens edu.unam.expedientesappfinal.controladores.prueba to
       javafx.fxml;
-  opens edu.unam.expedientesappfinal.modelos;
+  opens edu.unam.expedientesappfinal.models;
   opens edu.unam.expedientesappfinal.controladores.acciones;
 
   exports edu.unam.expedientesappfinal;
+  exports edu.unam.expedientesappfinal.controladores;
   exports edu.unam.expedientesappfinal.controladores.prueba;
   exports edu.unam.expedientesappfinal.controladores.acciones;
+  opens edu.unam.expedientesappfinal.controladores.personas;
+  opens edu.unam.expedientesappfinal.controladores;
 }

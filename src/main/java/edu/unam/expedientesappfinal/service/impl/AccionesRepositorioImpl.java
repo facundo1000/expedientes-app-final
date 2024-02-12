@@ -1,7 +1,7 @@
-package edu.unam.expedientesappfinal.repositorios.impl;
+package edu.unam.expedientesappfinal.service.impl;
 
-import edu.unam.expedientesappfinal.modelos.Persona;
-import edu.unam.expedientesappfinal.repositorios.Repositorio;
+import edu.unam.expedientesappfinal.models.AccionesRealizadas;
+import edu.unam.expedientesappfinal.service.Repositorio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -10,32 +10,34 @@ import jakarta.persistence.criteria.ParameterExpression;
 import jakarta.persistence.criteria.Root;
 import java.util.List;
 
-public class PersonasRepositorioImpl implements Repositorio<Persona> {
+public class AccionesRepositorioImpl implements Repositorio<AccionesRealizadas> {
+
   private EntityManager em;
 
-  public PersonasRepositorioImpl(EntityManager em) {
+  public AccionesRepositorioImpl(EntityManager em) {
     this.em = em;
   }
 
   @Override
-  public List<Persona> listar() {
+  public List<AccionesRealizadas> listar() {
     try {
       CriteriaBuilder cb = em.getCriteriaBuilder();
-      CriteriaQuery<Persona> consulta = cb.createQuery(Persona.class);
-      Root<Persona> origen = consulta.from(Persona.class);
+      CriteriaQuery<AccionesRealizadas> consulta = cb.createQuery(AccionesRealizadas.class);
+      Root<AccionesRealizadas> origen = consulta.from(AccionesRealizadas.class);
 
       return em.createQuery(consulta.select(origen)).getResultList();
     } catch (Exception e) {
-      throw new RuntimeException("Error al obtener la lista de personas: " + e.getMessage(), e);
+      throw new RuntimeException(
+          "Error al obtener la lista de acciones realizadas: " + e.getMessage(), e);
     }
   }
 
   @Override
-  public Persona obtenerPorId(Long id) {
+  public AccionesRealizadas obtenerPorId(Long id) {
     try {
       CriteriaBuilder cb = em.getCriteriaBuilder();
-      CriteriaQuery<Persona> query = cb.createQuery(Persona.class);
-      Root<Persona> from = query.from(Persona.class);
+      CriteriaQuery<AccionesRealizadas> query = cb.createQuery(AccionesRealizadas.class);
+      Root<AccionesRealizadas> from = query.from(AccionesRealizadas.class);
 
       ParameterExpression<Long> idParam = cb.parameter(Long.class, "id");
 
@@ -44,37 +46,37 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
       return em.createQuery(query).setParameter("id", id).getSingleResult();
     } catch (Exception e) {
       throw new RuntimeException(
-          "Error al obtener la persona con id " + id + ": " + e.getMessage(), e);
+          "Error al obtener la accion realizada con id " + id + ": " + e.getMessage(), e);
     }
   }
 
   @Override
-  public void crear(Persona persona) {
+  public void crear(AccionesRealizadas accion) {
     EntityTransaction transaction = null;
     try {
       transaction = em.getTransaction();
       transaction.begin();
-      em.persist(persona);
+      em.persist(accion);
       transaction.commit();
     } catch (Exception e) {
       if (transaction != null && transaction.isActive()) {
         transaction.rollback();
       }
-      throw new RuntimeException("Error al crear la persona: " + e.getMessage(), e);
+      throw new RuntimeException("Error al crear la accion: " + e.getMessage(), e);
     }
   }
 
   @Override
-  public void actualizar(Long id, Persona persona) {
-    Persona update;
+  public void actualizar(Long id, AccionesRealizadas accion) {
+    AccionesRealizadas update;
     EntityTransaction transaction = null;
     if (id != null) {
       try {
         transaction = em.getTransaction();
         transaction.begin(); // Inicio de la transaccion
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Persona> query = cb.createQuery(Persona.class);
-        Root<Persona> root = query.from(Persona.class);
+        CriteriaQuery<AccionesRealizadas> query = cb.createQuery(AccionesRealizadas.class);
+        Root<AccionesRealizadas> root = query.from(AccionesRealizadas.class);
 
         ParameterExpression<Long> idParam = cb.parameter(Long.class, "id");
         query.select(root).where(cb.equal(root.get("id"), idParam));
@@ -83,12 +85,16 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
         update = em.createQuery(query).setParameter("id", id).getSingleResult();
 
         if (update != null) {
-          update.setNombre(persona.getNombre().isBlank() ? update.getNombre() : persona.getNombre());
-          update.setApellido((persona.getApellido().isBlank()) ? update.getApellido() : persona.getApellido());
-          update.setDni((persona.getDni().isBlank()) ? update.getDni() : persona.getDni());
-          update.setTelefono((persona.getTelefono().isBlank()) ? update.getTelefono() : persona.getTelefono());
-          update.setEmail((persona.getEmail().isBlank()) ? update.getEmail() : persona.getEmail());
-          update.setTipoDePersona((persona.getTipoDePersona() == null) ? update.getTipoDePersona() : persona.getTipoDePersona());
+          update.setAccionRealizada(
+              accion.getAccionRealizada().isBlank()
+                  ? update.getAccionRealizada()
+                  : accion.getAccionRealizada());
+          update.setFechaDeAccion(
+              (accion.getFechaDeAccion() == null)
+                  ? update.getFechaDeAccion()
+                  : accion.getFechaDeAccion());
+
+          update.setExpediente((accion.getExpediente() == null) ? update.getExpediente() : accion.getExpediente());
           em.merge(update);
           transaction.commit();
         }
@@ -97,24 +103,24 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
         if (transaction != null && transaction.isActive()) {
           transaction.rollback();
         }
-        throw new RuntimeException("Error al actualizar la persona: " + e.getMessage(), e);
+        throw new RuntimeException("Error al actualizar la accion: " + e.getMessage(), e);
       }
     }
   }
 
   @Override
   public void eliminar(Long id) {
-    Persona persona;
+    AccionesRealizadas accion;
     EntityTransaction transaction = null;
     try {
       if (id != 0) {
         transaction = em.getTransaction();
         transaction.begin();
-        persona = em.find(Persona.class, id);
+        accion = em.find(AccionesRealizadas.class, id);
 
-        if (persona != null) {
-          persona.setEliminado(true);
-          System.out.println("Persona N° " + id + " eliminada");
+        if (accion != null) {
+          accion.setEliminado(true);
+          System.out.println("Accion N° " + id + " eliminada");
         }
         transaction.commit();
       }
@@ -123,7 +129,7 @@ public class PersonasRepositorioImpl implements Repositorio<Persona> {
         transaction.rollback();
       }
       throw new RuntimeException(
-          "Error al eliminar la persona con id " + id + ": " + e.getMessage(), e);
+          "Error al eliminar la accion con id " + id + ": " + e.getMessage(), e);
     }
   }
 }

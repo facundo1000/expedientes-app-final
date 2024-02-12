@@ -1,6 +1,6 @@
 package edu.unam.expedientesappfinal.controladores.acciones;
 
-import edu.unam.expedientesappfinal.modelos.AccionesRealizadas;
+import edu.unam.expedientesappfinal.models.AccionesRealizadas;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -30,5 +30,7 @@ public class AccionesRealizadasController {
         TableColumn<AccionesRealizadas, Void> accionesColumn = (TableColumn<AccionesRealizadas, Void>) accTable.getColumns().get(4); // Índice de la columna de Acciones
         accionesColumn.setCellFactory(AccionesTableCell.forTableColumn());
     }
+
+
 
 }

@@ -1,9 +1,10 @@
-package edu.unam.expedientesappfinal.modelos;
+package edu.unam.expedientesappfinal.models;
 
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +31,13 @@ public class Persona implements Serializable {
     @Column(length = 50, unique = true)
     private String email;
 
-    @Column(name = "tipo_persona")
+//    @Column(name = "tipo_persona")
+//    @ElementCollection
+//    private List<String> tipoDePersona;
+
+    @Column(name = "tipo_doc")
     @Enumerated(EnumType.STRING)
-    private TipoDePersona tipoDePersona;
+    private TipoDeDocumento tipoDoc;
 
 //    @ManyToMany(
 //            mappedBy = "involucrados",
@@ -40,9 +45,13 @@ public class Persona implements Serializable {
 //            cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 //    private List<Expediente> expediente;
 
+    @Column(name = "fecha_nac")
+    private LocalDate bday;
+
     private Boolean asistencia;
 
     private Boolean eliminado;
+
 
     @PrePersist
     public void setAsistenciaFalse() {
@@ -51,27 +60,27 @@ public class Persona implements Serializable {
     }
 
     public Persona() {
-//        this.expediente = new ArrayList<>();
+//        tipoDePersona = new ArrayList<>();
     }
 
-    public Persona(
-            String nombre,
-            String apellido,
-            String dni,
-            String telefono,
-            String email,
-            TipoDePersona tipoDePersona,
-            Boolean asistencia) {
+    public Persona(String nombre,
+                   String apellido,
+                   String dni,
+                   String telefono,
+                   String email,
+                   List<String> tipoDePersona,
+                   Boolean asistencia) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
         this.email = email;
-        this.tipoDePersona = tipoDePersona;
+//        this.tipoDePersona = tipoDePersona;
         this.asistencia = asistencia;
     }
 
-//    public void addExpediente(Expediente expediente) {
+
+    //    public void addExpediente(Expediente expediente) {
 //        this.expediente.add(expediente);
 //        expediente.getInvolucrados().add(this);
 //    }
@@ -80,6 +89,14 @@ public class Persona implements Serializable {
 //        this.expediente.remove(expediente);
 //        expediente.getInvolucrados().remove(this);
 //    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -121,13 +138,6 @@ public class Persona implements Serializable {
         this.email = email;
     }
 
-    public TipoDePersona getTipoDePersona() {
-        return tipoDePersona;
-    }
-
-    public void setTipoDePersona(TipoDePersona tipoDePersona) {
-        this.tipoDePersona = tipoDePersona;
-    }
 
 //    public List<Expediente> getExpediente() {
 //        return expediente;
@@ -153,6 +163,30 @@ public class Persona implements Serializable {
         this.eliminado = eliminado;
     }
 
+    public LocalDate getBday() {
+        return bday;
+    }
+
+    public void setBday(LocalDate bday) {
+        this.bday = bday;
+    }
+
+    public TipoDeDocumento getTipoDoc() {
+        return tipoDoc;
+    }
+
+    public void setTipoDoc(TipoDeDocumento tipoDoc) {
+        this.tipoDoc = tipoDoc;
+    }
+
+//    public List<String> getTipoDePersona() {
+//        return tipoDePersona;
+//    }
+//
+//    public void setTipoDePersona(List<String> tipoDePersona) {
+//        this.tipoDePersona = tipoDePersona;
+//    }
+
     @Override
     public String toString() {
         return "Persona{" +
@@ -162,7 +196,7 @@ public class Persona implements Serializable {
                 ", dni='" + dni + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", email='" + email + '\'' +
-                ", tipoDePersona=" + tipoDePersona +
+
                 ", asistencia=" + asistencia +
                 ", eliminado=" + eliminado +
                 '}';

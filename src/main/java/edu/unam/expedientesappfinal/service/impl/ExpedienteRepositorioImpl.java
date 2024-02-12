@@ -1,7 +1,7 @@
-package edu.unam.expedientesappfinal.repositorios.impl;
+package edu.unam.expedientesappfinal.service.impl;
 
-import edu.unam.expedientesappfinal.modelos.Expediente;
-import edu.unam.expedientesappfinal.repositorios.Repositorio;
+import edu.unam.expedientesappfinal.models.Expediente;
+import edu.unam.expedientesappfinal.service.Repositorio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.criteria.CriteriaBuilder;
