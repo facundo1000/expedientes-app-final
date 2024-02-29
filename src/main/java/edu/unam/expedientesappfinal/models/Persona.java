@@ -31,9 +31,9 @@ public class Persona implements Serializable {
     @Column(length = 50, unique = true)
     private String email;
 
-//    @Column(name = "tipo_persona")
-//    @ElementCollection
-//    private List<String> tipoDePersona;
+    @Column(name = "tipo_persona")
+    @ElementCollection
+    private List<String> tipoDePersona;
 
     @Column(name = "tipo_doc")
     @Enumerated(EnumType.STRING)
@@ -60,7 +60,7 @@ public class Persona implements Serializable {
     }
 
     public Persona() {
-//        tipoDePersona = new ArrayList<>();
+        tipoDePersona = new ArrayList<>();
     }
 
     public Persona(String nombre,
@@ -75,7 +75,7 @@ public class Persona implements Serializable {
         this.dni = dni;
         this.telefono = telefono;
         this.email = email;
-//        this.tipoDePersona = tipoDePersona;
+        this.tipoDePersona = tipoDePersona;
         this.asistencia = asistencia;
     }
 
@@ -179,13 +179,13 @@ public class Persona implements Serializable {
         this.tipoDoc = tipoDoc;
     }
 
-//    public List<String> getTipoDePersona() {
-//        return tipoDePersona;
-//    }
-//
-//    public void setTipoDePersona(List<String> tipoDePersona) {
-//        this.tipoDePersona = tipoDePersona;
-//    }
+    public List<String> getTipoDePersona() {
+        return tipoDePersona;
+    }
+
+    public void setTipoDePersona(List<String> tipoDePersona) {
+        this.tipoDePersona = tipoDePersona;
+    }
 
     @Override
     public String toString() {
@@ -196,7 +196,9 @@ public class Persona implements Serializable {
                 ", dni='" + dni + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", email='" + email + '\'' +
-
+                ", tipoDePersona=" + tipoDePersona +
+                ", tipoDoc=" + tipoDoc +
+                ", bday=" + bday +
                 ", asistencia=" + asistencia +
                 ", eliminado=" + eliminado +
                 '}';

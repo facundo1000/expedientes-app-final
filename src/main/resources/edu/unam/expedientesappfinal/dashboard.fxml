@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../springSandbox/expedientes-app-final/src/main/resources/design/main_form.css">
          <children>
-            <BorderPane prefHeight="800.0" prefWidth="1200.0" styleClass="shadow" stylesheets="@../../../design/main_form.css" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="18.0">
+            <BorderPane prefHeight="800.0" prefWidth="1200.0" styleClass="shadow" stylesheets="@../../../../../expedientes-app-final/src/main/resources/design/main_form.css" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="18.0">
                <left>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
@@ -48,7 +48,7 @@
                   </AnchorPane>
                </top>
                <center>
-                  <AnchorPane fx:id="addPersonasForm" prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../../design/main_form.css" BorderPane.alignment="CENTER">
+                  <AnchorPane fx:id="addPersonasForm" prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../../../../expedientes-app-final/src/main/resources/design/main_form.css" BorderPane.alignment="CENTER">
                      <children>
                         <TableView fx:id="addPersonasTableView" layoutX="13.0" layoutY="59.0" prefHeight="585.0" prefWidth="975.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
                           <columns>
